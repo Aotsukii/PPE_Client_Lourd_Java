@@ -75,7 +75,7 @@ public class Fenetre extends JFrame implements ActionListener
         }
 
         else if (e.getSource() == exitBtn){
-            this.dispose();
+            System.exit(0);
         }
     }
 }
