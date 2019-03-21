@@ -12,7 +12,7 @@ public class Fenetre extends JFrame implements ActionListener
     private JButton btn5 = new JButton("Historique des collectes");
     private JButton exitBtn = new JButton("Quitter");
     private GridLayout gl = new GridLayout(3,2);
-    private GridLayout gl2 = new GridLayout(0,6);
+    private GridLayout gl2 = new GridLayout(1,6);
     public Fenetre()
     {
         this.setTitle("Refuge du Languedoc");
