@@ -7,12 +7,12 @@ public class Fenetre extends JFrame implements ActionListener
     private JPanel accueil = new JPanel();
     private JButton adminBtn = new JButton("Administration des membres");
     private JButton collecteBtn = new JButton("Création d'une collecte");
-    private JButton btn3 = new JButton("Gestion des animaux à adopter");
-    private JButton btn4 = new JButton("Historique des animaux adoptés");
-    private JButton btn5 = new JButton("Historique des collectes");
+    private JButton gestionBtn = new JButton("Gestion des animaux à adopter");
+    private JButton histoAniBtn = new JButton("Historique des animaux adoptés");
+    private JButton histoCollBtn = new JButton("Historique des collectes");
     private JButton exitBtn = new JButton("Quitter");
     private GridLayout gl = new GridLayout(3,2);
-    private GridLayout gl2 = new GridLayout(1,6);
+
     public Fenetre()
     {
         this.setTitle("Refuge du Languedoc");
@@ -29,52 +29,114 @@ public class Fenetre extends JFrame implements ActionListener
         accueil.add(collecteBtn);
         collecteBtn.addActionListener(this);
 
-        accueil.add(btn3);
-        btn3.addActionListener(this);
+        accueil.add(gestionBtn);
+        gestionBtn.addActionListener(this);
 
-        accueil.add(btn4);
-        btn4.addActionListener(this);
+        accueil.add(histoAniBtn);
+        histoAniBtn.addActionListener(this);
 
-        accueil.add(btn5);
-        btn5.addActionListener(this);
+        accueil.add(histoCollBtn);
+        histoCollBtn.addActionListener(this);
 
         accueil.add(exitBtn);
         exitBtn.addActionListener(this);
-
-
     }
 
-    public void actionPerformed(ActionEvent e){
-
+    public void actionPerformed(ActionEvent e)
+    {
         if(e.getSource() == adminBtn){
-            //TODO FAIRE LISTE AVEC BOUCLES POUR SORTIR UN TABLEAU PAR LIGNE POUR CHAQUE MEMBRE
             JFrame administration = new JFrame();
             administration.setTitle("Liste des membres");
-            administration.setLayout(gl2);
+            administration.setLayout(new GridBagLayout());
             administration.setSize(new Dimension(800,600));
-            JLabel id = new JLabel("#");
-            JLabel name = new JLabel("Prénom");
-            JLabel surname = new JLabel("Nom");
-            JLabel estFA = new JLabel("est FA");
-            JLabel nbAnimaux = new JLabel("Nombre d'animaux");
-            JLabel delete = new JLabel("Supprimer le membre");
-            JButton registerBT = new JButton("Enregistrer");
 
-            administration.add(id);
-            administration.add(name);
-            administration.add(surname);
-            administration.add(estFA);
-            administration.add(nbAnimaux);
-            administration.add(delete);
-            administration.add(registerBT);
+            JLabel id = new JLabel("#");
+            GridBagConstraints c =  new GridBagConstraints();
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.anchor = GridBagConstraints.PAGE_START;
+            c.gridx = 0;
+            c.gridy = 0;
+            c.insets = new Insets(0,0,0,0);  //top padding
+            administration.add(id, c);
+
+            JLabel name = new JLabel("Prénom");
+            GridBagConstraints p =  new GridBagConstraints();
+            p.fill = GridBagConstraints.HORIZONTAL;
+            p.anchor = GridBagConstraints.PAGE_START;
+            p.gridx = 1;
+            p.gridy = 0;
+            p.insets = new Insets(0,50,0,0);  //top padding
+            administration.add(name, p);
+
+            JLabel surname = new JLabel("Nom");
+            GridBagConstraints sn = new GridBagConstraints();
+            sn.fill = GridBagConstraints.HORIZONTAL;
+            sn.anchor = GridBagConstraints.PAGE_START;
+            sn.gridx = 2;
+            sn.gridy = 0;
+            sn.insets = new Insets(0,50,0,0);  //top padding
+            administration.add(surname, sn);
+
+            JLabel estFA = new JLabel("est FA");
+            GridBagConstraints fa = new GridBagConstraints();
+            fa.fill = GridBagConstraints.HORIZONTAL;
+            fa.anchor = GridBagConstraints.PAGE_START;
+            fa.gridx = 3;
+            fa.gridy = 0;
+            fa.insets = new Insets(0,50,0,0);  //top padding
+            administration.add(estFA, fa);
+
+            JLabel nbAnimaux = new JLabel("Nombre d'animaux");
+            GridBagConstraints nba = new GridBagConstraints();
+            nba.fill = GridBagConstraints.HORIZONTAL;
+            nba.anchor = GridBagConstraints.PAGE_START;
+            nba.gridx = 4;
+            nba.gridy = 0;
+            nba.insets = new Insets(0, 50, 0, 0);
+            administration.add(nbAnimaux, nba);
+
+            JLabel delete = new JLabel("Supprimer le membre");
+            GridBagConstraints del = new GridBagConstraints();
+            del.fill = GridBagConstraints.HORIZONTAL;
+            del.anchor = GridBagConstraints.PAGE_START;
+            del.gridx = 5;
+            del.gridy = 0;
+            del.insets = new Insets(0,50,0,0);
+            administration.add(delete,del);
+
+            JButton registerBT = new JButton("Enregistrer");
+            GridBagConstraints r =  new GridBagConstraints();
+            r.fill = GridBagConstraints.HORIZONTAL;
+            r.ipady = 0;       //reset to default
+            r.weighty = 1.0;   //request any extra vertical space
+            r.anchor = GridBagConstraints.PAGE_END; //bottom of space
+            r.insets = new Insets(10,0,0,0);  //top padding
+            r.gridx = 1;       //aligned with button 2
+            r.gridwidth = 15;   //2 columns wide
+            r.gridheight = 3;
+            r.gridy = 5;       //third row
+            administration.add(registerBT, r);
+
             administration.setVisible(true);
         }
-        else if(e.getSource() == collecteBtn){
-
-            System.out.print("CREATION DE COLLECTE");
+        else if(e.getSource() == collecteBtn)
+        {
+            System.out.print("CREATION DE COLLECTE\n");
         }
-
-        else if (e.getSource() == exitBtn){
+        else if(e.getSource() == gestionBtn)
+        {
+            System.out.print("GESTION DES ANIMAUX\n");
+        }
+        else if(e.getSource() == histoAniBtn)
+        {
+            System.out.print("HISTORIQUE DES ANIMAUX ADOPTES\n");
+        }
+        else if(e.getSource() == histoCollBtn)
+        {
+            System.out.print("HISTORIQUE DES COLLECTES\n");
+        }
+        else if (e.getSource() == exitBtn)
+        {
             System.exit(0);
         }
     }
